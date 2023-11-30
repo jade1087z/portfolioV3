@@ -1,0 +1,46 @@
+#header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+    text-transform: uppercase;
+
+    .header__inner {
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        // background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(100px);
+        padding: 0 1.9rem;
+
+        .header__logo {
+            width: 30%;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            img {
+                width: 200px;
+                height: 100px;
+            }
+            h4 {
+                display: inline-block;
+            }
+            p {
+                display: inline-block;
+            }
+        }
+        .herader__nav {
+            width: 70%;
+            .menu {
+                display: flex;
+                justify-content: flex-end;
+                li {
+                    padding: 1rem;
+                }
+            }
+        }
+    }
+}
