@@ -1,0 +1,117 @@
+#work {
+    height: 100vh;
+    padding-top: 330px;
+    .work__inner {
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        // inner
+
+        .work__wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 50%;
+            .work__title {
+                font-size: 7.8vw;
+                line-height: 7.9vw;
+                font-weight: bold;
+
+                img {
+                    width: 11vw;
+                    height: 6.5vw;
+                }
+            }
+            // title
+
+            .work__flexBox {
+                display: flex;
+                .leftFlex {
+                    width: 50%;
+                }
+                .rightFlex {
+                    padding-right: 8%;
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 17vw;
+
+                    .underline {
+                        text-decoration: underline;
+                        text-underline-position: under;
+                    }
+                    p {
+                        font-size: 1vw;
+                        font-family: var(--font-chosun);
+                    }
+                }
+            }
+            // flexBox
+
+            .work__list {
+                padding-top: 150px;
+                .work__item {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .num {
+                        width: 30%;
+                        font-size: 20.8vw;
+                        font-weight: 600;
+                        line-height: 107%;
+                    }
+                    .item__wrap {
+                        width: 70%;
+                        height: 55vw;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        .item__title {
+                            font-size: 4.2vw;
+                            line-height: 120%;
+                            font-weight: 600;
+                        }
+                        .item__img {
+                            img {
+                                width: 33.6vw;
+                                height: 19.8vw;
+                            }
+                        }
+                        .item__desc {
+                            .desc__wrap {
+                                border-top: 2px solid var(--line-color);
+                                border-bottom: 2px solid var(--line-color);
+                                padding: 1.4rem 0;
+                                box-sizing: border-box;
+                                font-family: var(--font-s-core);
+                                .flex__desc {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    font-size: 1.3vw;
+                                    position: relative;
+                                    .icon__plus {
+                                        position: absolute;
+                                        right: 0%;
+                                        top: 28%;
+                                    }
+                                }
+                                .hidden__desc {
+                                    font-size: 1.1vw;
+                                    padding: 1.2rem 0 0rem 0;
+                                    font-weight: 300;
+                                    display: none;
+                                }
+                            }
+                            .desc__wrap:nth-child(2) {
+                                border-top: none;
+                            }
+                        }
+                    }
+                }
+            }
+            // workList
+        }
+        // wrap
+    }
+}

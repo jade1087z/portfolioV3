@@ -1,19 +1,17 @@
-body {
-}
 /* 스크롤바 레슨과 두께 변경 */
 ::-webkit-scrollbar {
     width: 1px;
 }
+
 #wrap {
     max-width: 1920px;
     margin: 0 auto;
 }
 
 section {
-    padding: 40px;
-}
-@media (max-width: 800px) {
-    section {
+    padding: 30px;
+
+    @media (max-width: 1200px) {
         padding: 20px;
     }
 }
