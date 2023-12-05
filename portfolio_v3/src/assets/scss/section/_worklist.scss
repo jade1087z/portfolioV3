@@ -1,5 +1,6 @@
+@import "../setting/animation";
+
 #work {
-    height: 100vh;
     padding-top: 330px;
     .work__inner {
         width: 100%;
@@ -26,6 +27,7 @@
 
             .work__flexBox {
                 display: flex;
+                padding-top: 70px;
                 .leftFlex {
                     width: 50%;
                 }
@@ -50,39 +52,46 @@
             // flexBox
 
             .work__list {
-                padding-top: 150px;
                 .work__item {
+                    position: sticky;
+                    top: 0;
+                    padding: 150px 0 200px 0;
                     display: flex;
                     justify-content: space-between;
+                    border-bottom: 1px solid var(--line-color);
 
                     .num {
                         width: 30%;
-                        font-size: 20.8vw;
+                        font-size: 10.5vw;
                         font-weight: 600;
                         line-height: 107%;
                     }
                     .item__wrap {
                         width: 70%;
-                        height: 55vw;
                         display: flex;
                         flex-direction: column;
-                        justify-content: space-between;
+                        justify-content: flex-start;
+
                         .item__title {
-                            font-size: 4.2vw;
+                            font-size: 3.5vw;
                             line-height: 120%;
-                            font-weight: 600;
+                            font-weight: bold;
+                            letter-spacing: -2px;
+                            text-transform: uppercase;
                         }
                         .item__img {
+                            padding: 3rem 0;
                             img {
-                                width: 33.6vw;
-                                height: 19.8vw;
+                                width: 30vw;
+                                height: 18vw;
                             }
                         }
                         .item__desc {
+                            width: 70%;
                             .desc__wrap {
-                                border-top: 2px solid var(--line-color);
-                                border-bottom: 2px solid var(--line-color);
-                                padding: 1.4rem 0;
+                                border-top: 1px solid var(--line-color);
+                                border-bottom: 1px solid var(--line-color);
+                                padding: 1rem 0;
                                 box-sizing: border-box;
                                 font-family: var(--font-s-core);
                                 .flex__desc {
@@ -94,13 +103,25 @@
                                         position: absolute;
                                         right: 0%;
                                         top: 28%;
+                                        transition: all 0.4s ease-in-out;
+                                        transform: rotate(45deg);
+                                    }
+                                    .close {
+                                        transform: rotate(0);
                                     }
                                 }
                                 .hidden__desc {
                                     font-size: 1.1vw;
-                                    padding: 1.2rem 0 0rem 0;
+                                    padding: 2rem 0 0rem 0;
                                     font-weight: 300;
-                                    display: none;
+                                }
+                                .hidden__desc.expand {
+                                    animation: expand 0.4s ease-in-out forwards;
+                                }
+
+                                .hidden__desc.collapse {
+                                    animation: collapse 0.1s ease-in-out
+                                        forwards;
                                 }
                             }
                             .desc__wrap:nth-child(2) {

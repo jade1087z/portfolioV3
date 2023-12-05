@@ -1,29 +1,8 @@
+@import "../setting/animation";
 #project {
     display: flex;
     padding-top: 70px;
 
-    @keyframes arrowAnimation {
-        0% {
-            transform: translateX(0);
-        }
-        50% {
-            transform: translateX(10px);
-        }
-        100% {
-            transform: translateX(0);
-        }
-    }
-    @keyframes arrowAnimation2 {
-        0% {
-            transform: translateX(0);
-        }
-        50% {
-            transform: translateX(5px);
-        }
-        100% {
-            transform: translateX(0);
-        }
-    }
     .project__wrap {
         display: flex;
 
@@ -77,6 +56,7 @@
                             position: relative;
                             font-family: var(--font-Roboto);
                             transition: all 0.2s;
+                            color: var(--black600);
                             &::before,
                             &::after {
                                 content: "";
@@ -95,7 +75,7 @@
                                 transition: all 0.3s;
                             }
                             &:hover {
-                                color: var(--black600);
+                                color: var(--black100);
                             }
                             &:hover::after {
                                 transform: scaleX(1);
@@ -107,6 +87,13 @@
                                 width: 0.8vw;
                                 height: 0.8vw;
                                 animation: arrowAnimation2 1.4s infinite;
+
+                                path {
+                                    fill: var(--black600);
+                                }
+                                &:hover path {
+                                    fill: var(--black100);
+                                }
                             }
                         }
                     }

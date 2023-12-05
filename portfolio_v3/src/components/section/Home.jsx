@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 import introCard from "../../assets/img/intro__card.png";
@@ -12,6 +12,7 @@ import proj02 from "../../assets/img/proj02.png";
 import proj03 from "../../assets/img/proj03.png";
 import { FaPlus } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+
 const Home = () => {
     const [isExpanded, setIsExpanded] = useState(false);
     const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -25,7 +26,42 @@ const Home = () => {
         setHoveredIndex(null);
     };
     const menuItems = ["about", "Work", "skill", "contact"];
-    // hover + toggle 메뉴
+    // hover + toggle 메뉴 =>
+
+    const [isOpen, setIsOpen] = useState(null);
+    const toggle = (index) => {
+        setIsOpen(index === isOpen ? null : index);
+    };
+    //  work list item toggle
+
+    // 스크롤 이벤트
+    const [bgColor, setBgColor] = useState("");
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.pageYOffset;
+            const section = document.querySelectorAll(".work__item");
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+
+            if (
+                scrollPosition >= sectionTop &&
+                scrollPosition <= sectionTop + sectionHeight
+            ) {
+                if (scrollPosition - sectionTop > 500) {
+                    setBgColor("red");
+                } else {
+                    setBgColor("white");
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     return (
         <div id="wrap">
@@ -190,6 +226,7 @@ const Home = () => {
                     </div>
                 </section>
                 {/* teamProject */}
+
                 <section id="work">
                     <div className="work__inner">
                         <div className="work__wrap">
@@ -217,7 +254,10 @@ const Home = () => {
                                 </div>
                             </div>
                             <div className="work__list">
-                                <div className="work__item w1">
+                                <div
+                                    className="work__item w1"
+                                    style={{ backgroundColor: bgColor }}
+                                >
                                     <div className="num">1.</div>
                                     <div className="item__wrap">
                                         <div className="item__title">
@@ -228,28 +268,194 @@ const Home = () => {
                                             <img src={proj01} alt="proj01" />
                                         </div>
                                         <div className="item__desc">
-                                            <div className="desc__wrap">
-                                                <div className="flex__desc">
-                                                    <span>Discovery</span>
-                                                    <FaPlus className="icon__plus" />
+                                            {[...Array(2)].map((_, index) => (
+                                                <div
+                                                    className="desc__wrap"
+                                                    onClick={() =>
+                                                        toggle(index)
+                                                    }
+                                                    key={index}
+                                                >
+                                                    <div className="flex__desc">
+                                                        <span>Discovery</span>
+                                                        {isOpen === index ? (
+                                                            <FaPlus className="icon__plus" />
+                                                        ) : (
+                                                            <FaPlus className="icon__plus close" />
+                                                        )}
+                                                    </div>
+                                                    <div
+                                                        className={`hidden__desc ${
+                                                            isOpen === index
+                                                                ? "expand"
+                                                                : "collapse"
+                                                        }`}
+                                                    >
+                                                        asd
+                                                    </div>
                                                 </div>
-                                                <div className="hidden__desc">
-                                                    asd
-                                                </div>
-                                            </div>
-
-                                            <div className="desc__wrap">
-                                                <div className="flex__desc">
-                                                    <span>Discovery</span>
-                                                    <FaPlus className="icon__plus" />
-                                                </div>
-                                                <div className="hidden__desc">
-                                                    asd
-                                                </div>
-                                            </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
+                                <div className="work__item w2">
+                                    <div className="num">2.</div>
+                                    <div className="item__wrap">
+                                        <div className="item__title">
+                                            From complex challenges to
+                                            collaborative partnerships
+                                        </div>
+                                        <div className="item__img">
+                                            <img src={proj02} alt="proj01" />
+                                        </div>
+                                        <div className="item__desc">
+                                            {[...Array(2)].map((_, index) => (
+                                                <div
+                                                    className="desc__wrap"
+                                                    onClick={() =>
+                                                        toggle(index)
+                                                    }
+                                                    key={index}
+                                                >
+                                                    <div className="flex__desc">
+                                                        <span>Discovery</span>
+                                                        {isOpen === index ? (
+                                                            <FaPlus className="icon__plus" />
+                                                        ) : (
+                                                            <FaPlus className="icon__plus close" />
+                                                        )}
+                                                    </div>
+                                                    <div
+                                                        className={`hidden__desc ${
+                                                            isOpen === index
+                                                                ? "expand"
+                                                                : "collapse"
+                                                        }`}
+                                                    >
+                                                        asd2
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="work__item w3">
+                                    <div className="num">3.</div>
+                                    <div className="item__wrap">
+                                        <div className="item__title">
+                                            From complex challenges to
+                                            collaborative partnerships
+                                        </div>
+                                        <div className="item__img">
+                                            <img src={proj03} alt="proj01" />
+                                        </div>
+                                        <div className="item__desc">
+                                            {[...Array(2)].map((_, index) => (
+                                                <div
+                                                    className="desc__wrap"
+                                                    onClick={() =>
+                                                        toggle(index)
+                                                    }
+                                                    key={index}
+                                                >
+                                                    <div className="flex__desc">
+                                                        <span>Discovery</span>
+                                                        {isOpen === index ? (
+                                                            <FaPlus className="icon__plus" />
+                                                        ) : (
+                                                            <FaPlus className="icon__plus close" />
+                                                        )}
+                                                    </div>
+                                                    <div
+                                                        className={`hidden__desc ${
+                                                            isOpen === index
+                                                                ? "expand"
+                                                                : "collapse"
+                                                        }`}
+                                                    >
+                                                        asd3
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {/* work */}
+
+                <section id="profile">
+                    <div className="profile__inner">
+                        <div className="left">
+                            <div className="profile__img"></div>
+                        </div>
+                        <div className="right">
+                            <div className="contents__wrap">
+                                <div className="contents c1">
+                                    <p className="num">01.</p>
+                                    <div className="contents__text">
+                                        <p className="contents__title">
+                                            What do you think makes front-end
+                                            development attractive?
+                                        </p>
+                                        <p className="contents__desc">
+                                            프론트엔드의 영역은 코드와 디자인이
+                                            만나는 독특한 공간이기에, 웹 개발에
+                                            있어 프론트엔드가 할 수 있는 일이
+                                            정말 많다고 생각합니다. 그만큼
+                                            부딪혀야 할 일이 많아 험난할 것이라
+                                            예상되지만 개발의 전반적인 부분을
+                                            담당할 수 있다는 점 때문에, 한
+                                            켠으로는 설레는 일이라 생각됩니다.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="contents c2">
+                                    <p className="num">02.</p>
+                                    <div className="contents__text">
+                                        <p className="contents__title">
+                                            What do you think makes front-end
+                                            development attractive?
+                                        </p>
+                                        <p className="contents__desc">
+                                            프론트엔드의 영역은 코드와 디자인이
+                                            만나는 독특한 공간이기에, 웹 개발에
+                                            있어 프론트엔드가 할 수 있는 일이
+                                            정말 많다고 생각합니다. 그만큼
+                                            부딪혀야 할 일이 많아 험난할 것이라
+                                            예상되지만 개발의 전반적인 부분을
+                                            담당할 수 있다는 점 때문에, 한
+                                            켠으로는 설레는 일이라 생각됩니다.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="contents c3">
+                                    <p className="num">03.</p>
+                                    <div className="contents__text">
+                                        <p className="contents__title">
+                                            What do you think makes front-end
+                                            development attractive?
+                                        </p>
+                                        <p className="contents__desc">
+                                            프론트엔드의 영역은 코드와 디자인이
+                                            만나는 독특한 공간이기에, 웹 개발에
+                                            있어 프론트엔드가 할 수 있는 일이
+                                            정말 많다고 생각합니다. 그만큼
+                                            부딪혀야 할 일이 많아 험난할 것이라
+                                            예상되지만 개발의 전반적인 부분을
+                                            담당할 수 있다는 점 때문에, 한
+                                            켠으로는 설레는 일이라 생각됩니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="profile__more">
+                                <Link to={"#"}>
+                                    <p>Let’s work together</p>
+                                    <FaArrowRight className="arrow__icon" />
+                                </Link>
                             </div>
                         </div>
                     </div>
