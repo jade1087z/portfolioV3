@@ -6,9 +6,12 @@
 @import "./setting/reset";
 @import "./setting/vars";
 
-@import "./section/header";
-@import "./section/intro";
-@import "./section/project";
-@import "./section/slider";
-@import "./section/worklist";
-@import "./section/profile";
+@import "./setting/mp";
+@import "./setting/gsap";
+
+@import "./section/section1";
+@import "./section/section2";
+@import "./section/section3";
+@import "./section/section4";
+@import "./section/section5";
+@import "./section/section6";
